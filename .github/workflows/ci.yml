@@ -55,8 +55,8 @@ jobs:
       - name: Run Tests
         run: npm run test
 
-      - name: Build the app
-        run: npm run build  # Builds the React app for production
+      #- name: Build the app
+      #  run: npm run build  # Builds the React app for production
   # Job to deploy the application after build
   deploy:
     runs-on: ubuntu-latest

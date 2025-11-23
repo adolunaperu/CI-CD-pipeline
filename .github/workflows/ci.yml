@@ -33,7 +33,7 @@ jobs:
         run: npm run build  # Builds the React app for production
   tests:
     name: Run Tests
-    needs: eslint
+    #needs: eslint
     runs-on: ubuntu-latest
 
     steps:

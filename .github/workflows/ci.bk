@@ -26,34 +26,12 @@ jobs:
       - name: Install dependencies
         run: npm install  # Installs the required dependencies
 
-      #- name: Run tests
-      #  run: npm test  # Runs your tests
+      - name: Run tests
+        run: npm test  # Runs your tests
 
       - name: Build the app
         run: npm run build  # Builds the React app for production
-  tests:
-    name: Run Tests
-    needs: eslint
-    runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        
-      - name: Use Node.js 18.x to run Test
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.x
-          cache: 'npm'
-          
-      - name: Install Dependencies
-        run: npm install
-        
-      - name: Run Tests
-        run: npm run test
-
-      - name: Build the app
-        run: npm run build  # Builds the React app for production
   # Job to deploy the application after build
   deploy:
     runs-on: ubuntu-latest

@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          THis is the  <code>CI-CD</code> Demo Projects
+          THis is the  <code>CI-CD</code> Demo Projects ado
         </p>
 
           Learn more on React CI/CD Pipeline

@@ -11,30 +11,51 @@ on:
 
 jobs:
   # Job to build and test the application
-  build:
-    runs-on: ubuntu-latest  # This specifies the OS for the job
+jobs:
+  eslint:
+    name: Check Syntax with ESLint
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2  # Checks out the code from your repository
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2  # Sets up the Node.js environment
+        uses: actions/checkout@v3
+        
+      - name: Use Node.js ${{ matrix.node-version }} to Check Lint
+        uses: actions/setup-node@v3
         with:
-          node-version: '16'  # Specifies the version of Node.js
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          
+      - name: Install Dependencies
+        run: npm ci
+        
+      - name: Run ESLint
+        run: npm run lint
 
-      - name: Install dependencies
-        run: npm install  # Installs the required dependencies
-
-      #- name: Run tests
-      #  run: npm test  # Runs your tests
-
-      - name: Build the app
-        run: npm run build  # Builds the React app for production
   tests:
     name: Run Tests
-    #needs: eslint
+    needs: eslint
     runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Use Node.js 18.x to run Test
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: 'npm'
+          
+      - name: Install Dependencies
+        run: npm ci
+        
+      - name: Run Tests
+        run: npm run test
 
     steps:
       - name: Checkout code

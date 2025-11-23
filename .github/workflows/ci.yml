@@ -10,8 +10,6 @@ on:
       - master
 
 jobs:
-  # Job to build and test the application
-jobs:
   eslint:
     name: Check Syntax with ESLint
     runs-on: ubuntu-latest

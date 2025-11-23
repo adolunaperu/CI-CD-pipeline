@@ -12,7 +12,7 @@ function App() {
 
           Learn more on React CI/CD Pipeline
           <a href="https://www.esan.edu.pe/">learn react</a>
-          <p>helllo this is biswajit</p>
+          <p>helllo this is Ado</p>
       </header>
     </div>
   );
